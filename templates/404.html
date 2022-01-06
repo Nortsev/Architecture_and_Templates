@@ -1,45 +1,34 @@
-<html> 
-<HEAD> 
-<meta http-equiv="Pragma" content="no-cache"> 
-<!-- david barton limpfish.com  david barton limpfish.com david barton limpfish.com david
- 
- 
- 
- 
- 
-//-->
- 
-<TITLE>file not found</TITLE> 
-<STYLE type="text/css"> 
- 
-.small
-	{ font: 10px/9px verdana, arial, helvetica, sans-serif; color: #666666; }
-	
- 
-</STYLE> 
- 
-</HEAD> 
- 
-<body bgcolor=#ffffff> 
- 
-<BR><BR><BR> 
- 
-<center><a href="hhttp://www.geekbrains.ru"><img src="http://www.limpfish.com/notfound.gif" border="0" width=348 height=378 ></a>
- 
-<BR><BR><BR><BR> 
- 
-<DIV CLASS="small"> 
-    <h5>ERROR 404</h5>
-<a href="http://www.gb.ru">http://www.geekbrains.ru</a></a>
- 
- 
-</DIV> 
-</center> 
- 
-</body> 
- 
-</html> 
- 
-<!--
+    {% extends "base_temlates/base.html" %}
+    {% block title %}
+         404 -  black &amp; white -404
+    {% endblock %}
 
--->
+    {% block style %}
+        {% include "base_temlates/inc-style.html" %}
+    {% endblock %}
+
+    {% block body %}
+        <body bgcolor=#ffffff>
+
+        <BR><BR><BR>
+
+        <center><a href="hhttp://www.geekbrains.ru"><img src="http://www.limpfish.com/notfound.gif" border="0" width=348 height=378 ></a>
+
+        <BR><BR><BR><BR>
+
+        <DIV CLASS="small">
+        <h5>ERROR 404</h5>
+        <a href="http://www.gb.ru">http://www.geekbrains.ru</a></a>
+
+
+        </DIV>
+        </center>
+
+        </body>
+    {% endblock %}
+
+    {% block footer %}
+        {% include "base_temlates/inc-footer.html" %}
+    {% endblock %}
+
+
