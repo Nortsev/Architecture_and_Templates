@@ -22,10 +22,10 @@
             <ul id="menu">
               <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
               <li class="selected"><a href="/">Home</a></li>
-              <li><a href="examples">Examples</a></li>
-              <li><a href="page">A Page</a></li>
-              <li><a href="another_page">Another Page</a></li>
-              <li><a href="contact">Contact Us</a></li>
+              <li><a href="/examples/">Examples</a></li>
+              <li><a href="/page/">A Page</a></li>
+              <li><a href="/another_page/">Another Page</a></li>
+              <li><a href="/contact/">Contact Us</a></li>
             </ul>
           </div>
         </div>
@@ -61,35 +61,30 @@
         </form>
       </div>
       <div id="content">
-          <div>
-              <a href="create-category">Создать новую категорию</a>
-          </div>
-          <div>
-              <h1>Список существующих категорий</h1>
-              {% for item in objects_list %}
-                  <li>
-                      {{item.name}} <span>Количество курсов: {{item.course_count()}}</span>
-                      <a href="/courses-list/?id={{item.id}}">Показать курсы</a>
-                  </li>
-              {% endfor %}
-          </div>
-          <div>
-            <li>
-                <a href="/student-list/">Список студентов</a>
-            </li>
-            <li>
-                <a href="/create-student/">Создать студента</a>
-            </li>
-            <li>
-                <a href="/add-student/">Добавить студента на курс</a>
-            </li>
-          </div>
+            <div>
+                <li>
+                    <a href="/create-student/">Создать студента</a>
+                </li>
+                <li>
+                    <a href="/add-student/">Добавить студента на курс</a>
+                </li>
+            </div>
+            <h1>Список студентов</h1>
+            <div>
+
+                {% for item in objects_list %}
+                <li>
+                    {{item.name}}
+                    {% for course in item.courses %}
+                        {{course.name}}
+                    {% endfor %}
+                </li>
+                {% endfor %}
+            </div>
+        </div>
       </div>
-    </div>
     {% endblock %}
 
     {% block footer %}
         {% include "base_temlates/inc-footer.html" %}
     {% endblock %}
-
-
