@@ -22,10 +22,10 @@
             <ul id="menu">
               <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
               <li class="selected"><a href="/">Home</a></li>
-              <li><a href="examples">Examples</a></li>
-              <li><a href="page">A Page</a></li>
-              <li><a href="another_page">Another Page</a></li>
-              <li><a href="contact">Contact Us</a></li>
+              <li><a href="/examples/">Examples</a></li>
+              <li><a href="/page/">A Page</a></li>
+              <li><a href="/another_page/">Another Page</a></li>
+              <li><a href="/contact/">Contact Us</a></li>
             </ul>
           </div>
         </div>
@@ -61,24 +61,24 @@
         </form>
       </div>
       <div id="content">
-          <div>
-              <a href="create-category">Создать новую категорию</a>
+            <div>
+                <a href="/courses-list/?id={{id}}">назад</a>
+            </div>
+
+            <br>
+            <br>
+
+            <div>
+                <h1>Создание курса для категории "{{name}}"</h1>
+                <form method="post">
+                    <input type="text" name="name" placeholder="Название">
+                    <button type="submit">Сохранить и вернуться к списку курсов</button>
+                </form>
+            </div>
           </div>
-          <div>
-              <h1>Список существующих категорий</h1>
-              {% for item in objects_list %}
-                  <li>
-                      {{item.name}} <span>Количество курсов: {{item.course_count()}}</span>
-                      <a href="/courses-list/?id={{item.id}}">Показать курсы</a>
-                  </li>
-              {% endfor %}
-          </div>
-      </div>
     </div>
     {% endblock %}
 
     {% block footer %}
         {% include "base_temlates/inc-footer.html" %}
     {% endblock %}
-
-
