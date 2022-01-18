@@ -1,35 +1,48 @@
 from geekbrains_framework.templator import render
 from patterns.сreational_patterns import Engine, Logger
+from patterns.structural_patterns import AppRoute, Debug
 
 site = Engine()
 logger = Logger('main')
+routes = {}
 
 
+@AppRoute(routes=routes, url='/')
 class Index:
+    @Debug(name='Index')
     def __call__(self, request):
         return '200 OK', render('index.html', objects_list=site.categories)
 
 
+@AppRoute(routes=routes, url='/contact/')
 class Contact:
+    @Debug(name='Contact')
     def __call__(self, request):
         return '200 OK', render('contact.html', date=request.get('date', None))
 
 
+@AppRoute(routes=routes, url='/examples/')
 class Examples:
+    @Debug(name='Examples')
     def __call__(self, request):
         return '200 OK', render('examples.html', date=request.get('date', None))
 
 
+@AppRoute(routes=routes, url='/another_page/')
 class Another_page:
+    @Debug(name='Another_page')
     def __call__(self, request):
         return '200 OK', render('another_page.html', date=request.get('date', None))
 
 
+@AppRoute(routes=routes, url='/page/')
 class Page:
+    @Debug(name='Page')
     def __call__(self, request):
         return '200 OK', render('page.html', date=request.get('date', None))
 
 
+@AppRoute(routes=routes, url='/courses-list/')
 class CoursesList:
     """
     Контроллер - список курсов
@@ -47,6 +60,7 @@ class CoursesList:
             return '200 OK', 'No courses have been added yet'
 
 
+@AppRoute(routes=routes, url='/create-course/')
 class CreateCourse:
     """
     Контроллер - создать курс
@@ -85,6 +99,7 @@ class CreateCourse:
                 return '200 OK', 'No categories have been added yet'
 
 
+@AppRoute(routes=routes, url='/create-category/')
 class CreateCategory:
     """
     Контроллер - создать категорию
@@ -116,6 +131,7 @@ class CreateCategory:
                                     categories=categories)
 
 
+@AppRoute(routes=routes, url='/category-list/')
 class CategoryList:
     """
     Контроллер - список категорий
@@ -127,6 +143,7 @@ class CategoryList:
                                 objects_list=site.categories)
 
 
+@AppRoute(routes=routes, url='/copy-course/')
 class CopyCourse:
     """
     Контроллер - копировать курс
